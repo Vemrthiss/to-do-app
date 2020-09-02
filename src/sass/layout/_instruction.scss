@@ -1,0 +1,54 @@
+.instruction {
+    &__toggle-wrapper {
+        filter: drop-shadow(2px 0 4px rgba(0,0,0,0.4));
+    }
+
+    &__toggle {
+        position: relative;
+        background-color: rgba(#fff, 0.3);
+        transform: scale(.7) translateY(9px);
+        transition: all .2s;
+        clip-path: polygon(20% 0, 80% 0, 85% 6.25%, 90% 25%, 95% 56.25%, 100% 100%, 0 100%, 5% 56.25%, 10% 25%, 15% 6.25%);
+
+        &:hover {
+            transform: scale(1) translateY(0);
+
+            .instruction__toggle-text {
+                opacity: 1;
+            }
+
+            .instruction__toggle-icon {
+                animation: infiniteUpDown 1s infinite;
+            }
+
+            .instruction__toggle-icon--reversed {
+                animation: infiniteUpDownReversed 1s infinite;
+            }
+        }
+    }
+
+    &__toggle-icon {
+        height: 2rem;
+        width: 2rem;
+        backface-visibility: hidden;
+    }
+
+    &__toggle-icon--reversed {
+        height: 2rem;
+        width: 2rem;
+        backface-visibility: hidden;
+        transform: rotate(180deg);
+    }
+
+    &__toggle-text {
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    &__text-wrapper {
+        background-color: rgba(#fff, 0.3);
+        padding: 1rem;
+        border-radius: 3rem;
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+        <title>GeT ShIt DoNE | by Joel Tay</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="instruction">
+                <div class="instruction__toggle-wrapper">
+                    <button class="btn instruction__toggle">
+                        <svg class="instruction__toggle-icon">
+                            <use xlink:href="img/sprite.svg#icon-circle-up"></use>
+                        </svg>
+                        <div class="instruction__toggle-text">Show instructions</div>
+                    </button>
+                </div>
+                <!-- <div class="instruction__text-wrapper">
+                    <p class="instruction__text">Enter text into the input field below and indicate the task's dateline by clicking on the calendar icon. Once that is completed, press "enter" or click on the "add to-do" button below to log your to-do into the app.</p>
+                    <p class="instruction__text">Your To-Do List's data will be saved on the device and the browser. In other words, if you want to come back to the same list and not lose your data, you will need to use the same device and browser everytime you use this app.</p>
+                </div> -->
+            </div>
+
+            <!-- <h1 class="header__title">Good morning! Welcome to your To-Do List</h1> -->
+            <form action="" class="header__addToDo">
+                <div class="header__addToDo-inputField">
+                    <input type="text" class="header__toDoText" placeholder="Add a task!" required>
+                    <input type="date" id="header__dueDate" class="header__dueDate" required>
+                    <div class="header__dueDateSelect-dummy">
+                        <div class="header__showCalendar">
+                            <div class="header__showCalendar-text">Due Date</div>
+                            <svg class="header__showCalendar-icon">
+                                <use xlink:href="img/sprite.svg#icon-calendar"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn header__submitToDo">Add To-Do</button>
+            </form>
+
+            <!-- <button class="btn btn-reset-all">delete all tasks</button> -->
+        </header>
+
+
+        <section class="toDoList">
+            <h3 class="toDoList__heading">Tasks to be completed</h3>
+
+            <!-- <div class="toDoList__sort-selection-wrapper">
+                <label for="toDoList__sort-selection" class="toDoList__sort-selection-label">Sort by:</label>
+                <select name="sort" id="toDoList__sort-selection" class="toDoList__sort-selection">
+                    <option value="default">Addition Order</option>
+                    <option value="nominal ascending">Name: A to Z</option>
+                    <option value="nominal descending">Name: Z to A</option>
+                    <option value="due date urgent">Due Date: Earliest to Latest</option>
+                    <option value="due date non urgent">Due Date: Latest to Earliest</option>
+                </select>
+            </div> -->
+
+            <ul class="toDoList__full">
+                <!-- <li class="toDoListItem">
+                    <div class="toDoListItem__popup toDoListItem__edit-popup">
+                        <form action="" class="toDoListItem__form toDoListItem__edit-form">
+                            <button class="btn btn-edit btn-edit--submit toDoListItem__edit-submit">Submit changes</button>
+                            <input type="text" class="toDoListItem__input-edit toDoListItem__edit-text">
+                        </form>
+                        <button class="btn btn-edit btn-edit--cancel toDoListItem__edit-cancel">Cancel</button>
+                    </div>
+
+                    <div class="toDoListItem__edit-wrapper">
+                        <button class="btn btn--hidden toDoListItem__edit-btn">
+                            <svg class="toDoListItem__edit-btn-icon">
+                                <use xlink:href="img/sprite.svg#icon-pencil"></use>
+                            </svg>
+                        </button>
+                        <p class="toDoListItem__name">Take temperature</p>
+                    </div>
+
+                    <div class="toDoListItem__popup toDoListItem__dueDate-edit-popup">
+                        <form action="" class="toDoListItem__form toDoListItem__dueDate-edit-form">
+                            <button class="btn btn-edit btn-edit--submit toDoListItem__dueDate-edit-submit">Submit changes</button>
+                            <input type="date" class="toDoListItem__input-edit toDoListItem__dueDate-edit">
+                        </form>
+                        <button class="btn btn-edit btn-edit--cancel toDoListItem__dueDate-edit-cancel">Cancel</button>
+                    </div>
+
+                    <div class="toDoListItem__dueDate-wrapper">
+                        <p class="toDoListItem__dueDate-date">28/06/2020</p>
+                        <button class="btn btn--hidden toDoListItem__dueDate-btn">
+                            <svg class="toDoListItem__dueDate-btn-icon">
+                                <use xlink:href="img/sprite.svg#icon-calendar"></use>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <button class="btn btn--hidden toDoListItem__complete-btn">
+                        <svg class="toDoListItem__complete-btn-icon">
+                            <use xlink:href="img/sprite.svg#icon-checkmark"></use>
+                        </svg>
+                    </button>
+                </li> -->
+            </ul>
+
+            <!-- <div class="toDoList__pagination">
+                <button class="btn btn--hidden toDoList__pagination-btn toDoList__pagination-btn--backward">
+                    <svg class="toDoList__pagination-btn-icon">
+                        <use xlink:href="img/sprite.svg#icon-circle-left"></use>
+                    </svg>
+                </button>
+                <p class="toDoList__pagination-page-number">Page 1</p>
+                <button class="btn btn--hidden toDoList__pagination-btn toDoList__pagination-btn--forward">
+                    <svg class="toDoList__pagination-btn-icon">
+                        <use xlink:href="img/sprite.svg#icon-circle-right"></use>
+                    </svg>
+                </button>
+            </div> -->
+        </section>
+
+
+        <section class="completedList">
+            <h3 class="completedList__heading">Completed tasks</h3>
+
+            <!-- <div class="completedList__sort-selection-wrapper">
+                <label for="completedList__sort-selection" class="completedList__sort-selection-label">Sort by:</label>
+                <select name="sort" id="completedList__sort-selection" class="completedList__sort-selection">
+                    <option value="default">Completion: Latest to Oldest</option>
+                    <option value="default reversed">Completion: Oldest to Latest</option>
+                    <option value="nominal ascending">Name: A to Z</option>
+                    <option value="nominal descending">Name: Z to A</option>
+                </select>
+            </div> -->
+
+            <ul class="completedList__full">
+                <!-- <li class="completedListItem">
+                    <button class="btn btn--hidden completedListItem__redo-btn">
+                        <svg class="completedListItem__redo-btn-icon">
+                            <use xlink:href="img/sprite.svg#icon-redo2"></use>
+                        </svg>
+                    </button>
+                    <p class="completedListItem__name">Take temperature</p>
+
+                    <div class="completedListItem__completedDate-wrapper">
+                        <button class="btn btn--hidden completedListItem__completedDate-btn">
+                            <svg class="completedListItem__completedDate-btn-icon">
+                                <use xlink:href="img/sprite.svg#icon-calendar"></use>
+                            </svg>
+                        </button>
+                        <div class="completedListItem__completedDate-details">
+                            <p class="completedListItem__completedDate-date">28/06/2020</p>
+                            <p class="completedListItem__completedDate-time">16 : 15</p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn--hidden completedListItem__delete-btn">
+                        <svg class="completedListItem__delete-btn-icon">
+                            <use xlink:href="img/sprite.svg#icon-bin2"></use>
+                        </svg>
+                    </button>
+                </li> -->
+            </ul>
+
+            <!-- <div class="completedList__pagination">
+                <button class="btn btn--hidden completedList__pagination-btn completedList__pagination-btn--backward">
+                    <svg class="completedList__pagination-btn-icon">
+                        <use xlink:href="img/sprite.svg#icon-circle-left"></use>
+                    </svg>
+                </button>
+                <p class="completedList__pagination-page-number">Page 1</p>
+                <button class="btn btn--hidden completedList__pagination-btn completedList__pagination-btn--forward">
+                    <svg class="completedList__pagination-btn-icon">
+                        <use xlink:href="img/sprite.svg#icon-circle-right"></use>
+                    </svg>
+                </button>
+            </div> -->
+        </section>
+
+
+        <footer class="footer">
+            <p class="footer__text">Built and Copyright &copy; by Joel Tay</p>
+        </footer>
+    </body>
+</html>

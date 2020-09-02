@@ -1,0 +1,179 @@
+.toDoListItem {
+    display: grid;
+    grid-template-columns: repeat(2, 40%) 1fr;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background-color: var(--color-primary-light-1);
+
+    @include respond(56.25em) {
+        grid-template-columns: repeat(2, 45%) 1fr;
+        padding: 2.25rem;
+    }
+
+    @include respond(25em) {
+        grid-template-columns: repeat(2, 47.5%) 1fr;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+
+        @include respond(56.25em) {
+            margin-bottom: .75rem;
+        }
+
+        @include respond(50em) {
+            margin-bottom: 1rem;;
+        }
+
+        @include respond(40em) {
+            margin-bottom: 1.25rem;;
+        }
+    }
+
+    &:nth-child(2n) {
+        background-color: var(--color-baby-blue);
+    }
+
+    &__popup, &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__input-edit {
+        margin: .5rem 0;
+        border-radius: 1rem;
+        border: none;
+        padding: .5rem;
+        outline: none;
+    }
+
+    &__edit-popup {
+        margin-right: 1.5rem;
+    }
+
+    &__edit-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &__edit-btn {
+        position: relative; //for absolute positioning of after pseudo element
+
+        &:hover &-icon {
+            animation: infiniteScale 1.25s infinite;
+        }
+
+        &:hover::after {
+            @include toDoListNoteHover;
+        }
+
+        &::after {
+            content: 'Edit task';
+            @include toDoListNote;
+        }
+    }
+
+    &__edit-btn-icon {
+        height: 2rem;
+        width: 2rem;
+
+        @include respond(56.25em) {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @include respond(50em) {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
+    &__name {
+        margin: 0 0 0 2rem;
+    }
+
+    &__dueDate-edit {
+        &::-webkit-calendar-picker-indicator:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__dueDate-wrapper {
+        display: flex;
+        align-items: center;
+        justify-self: center;
+    }
+
+    &__dueDate-date {
+        margin: 0;
+    }
+
+    &__dueDate-btn {
+        margin-left: 5px;
+        position: relative; //for absolute positioning of after pseudo element
+
+        &:hover &-icon {
+            animation: infiniteScale 1.25s infinite;
+        }
+
+        &:hover::after {
+            @include toDoListNoteHover;
+        }
+
+        &::after {
+            content: 'Edit deadline';
+            @include toDoListNote;
+        }
+    }
+
+    &__dueDate-btn-icon {
+        height: 2rem;
+        width: 2rem;
+        margin-left: 5px;
+
+        @include respond(56.25em) {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @include respond(50em) {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
+    &__complete-btn {
+        position: relative; //for absolute positioning of after pseudo element
+        align-self: center;
+        justify-self: center;      
+
+        &:hover &-icon {
+            animation: infiniteScale 1.25s infinite;
+        }
+
+        &:hover::after {
+            @include toDoListNoteHover;
+        }
+
+        &::after {
+            content: 'Mark as completed';
+            @include toDoListNote;
+        }
+    }
+
+    &__complete-btn-icon {
+        height: 2rem;
+        width: 2rem;
+
+        @include respond(56.25em) {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @include respond(50em) {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+}

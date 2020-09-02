@@ -1,0 +1,161 @@
+.header {
+    grid-area: header;
+    position: relative; //absolute positioning of reset all btn
+
+    &__title {
+        margin-top: 0;
+
+        span {
+            @include respond(28em) {
+                display: block;
+            }
+        }
+    }
+
+    &__addToDo {
+        margin-top: 1rem;
+        position: relative; //absolute positioning of submit button
+
+        & > * {
+            display: inline-block;
+        }
+    }
+
+    &__addToDo-inputField {
+        position: relative; //absolute positioning of dummy div and dueDate input
+
+        &::after {
+            content: "";
+            height: 90%;
+            width: 2px;
+            background-color: #eee;
+            position: absolute;
+            top: 50%;
+            right: 14rem;
+            transform: translateY(-50%);
+
+            @include respond(40em) {
+                height: 85%;
+            }
+        }
+    }
+
+    &__toDoText {
+        padding: 1.5rem;
+        width: 37.5vw;
+        padding-right: 12.5vw;
+
+        border: 3px solid var(--color-bluegreen-1);
+        border-radius: 3rem;
+        outline: none;
+        transition: border .3s;
+
+        @include respond(66em) {
+            width: 42.5vw;
+            padding-right: 14.5vw;
+        }
+
+        @include respond(56.25em) {
+            width: 50vw;
+            padding-right: 16vw;
+        }
+
+        @include respond(50em) {
+            width: 60vw;
+            padding-right: 17.5vw;
+        }
+
+        @include respond(37em) {
+            width: 65vw;
+            padding-right: 20vw;
+        }
+
+        @include respond(32em) {
+            width: 75vw;
+            padding-right: 22.5vw;
+        }
+
+        @include respond(28em) {
+            width: 85vw;
+            padding: 1.25rem;
+            padding-right: 25vw;
+        }
+
+        @include respond(25em) {
+            width: 90vw;
+            padding-right: 28vw;
+        }
+
+        @include respond(22em) {
+            padding-right: 32.5vw;
+        }
+
+        @include respond(20em) {
+            padding-right: 35vw;
+        }
+    }
+
+    &__dueDate {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        opacity: 0;
+
+        @include respond(40em) {
+            right: 1rem;
+        }
+
+        &::-webkit-calendar-picker-indicator:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__dueDateSelect-dummy {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        padding: 0;
+    }
+
+    &__showCalendar {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        font-family: inherit;
+        background-color: transparent;
+    }
+
+    &__showCalendar-text {
+        display: inline-block;
+    }
+
+    &__showCalendar-icon {
+        height: 2rem;
+        width: 2rem;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+
+    &__submitToDo {
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: -4rem;
+        transform: translateX(-50%);
+        border-radius: 3rem;
+        padding: .8rem 1.2rem;
+        overflow: hidden;
+
+        &:hover::before {
+            width: 100%;
+        }
+
+        &::before {
+            @include coloredScreen();
+        }
+    }
+}

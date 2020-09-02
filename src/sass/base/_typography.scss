@@ -1,0 +1,210 @@
+.btn {
+    font-family: inherit;
+}
+
+.btn-edit {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.btn-reset-all {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+
+    @include respond(56.25em) {
+        font-size: 1.2rem;
+    }
+
+    @include respond(50em) {
+        font-size: 1.4rem;
+    }
+}
+
+.completedListItem {
+    & > * {
+        font-size: 1.6rem;
+
+        @include respond(50em) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__name {
+        word-break: break-all;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
+.toDoListItem {
+    & > * {
+        font-size: 1.6rem;
+
+        @include respond(50em) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__input-edit {
+        font-family: inherit;
+    }
+
+    &__name {
+        word-break: break-all;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
+.completedList {
+    &__heading {
+        font-size: 2.2rem;
+
+        @include respond(66em) {
+            font-size: 2rem;
+        }
+
+        @include respond(50em) {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__sort-selection-wrapper {
+        font-size: 1.6rem;
+
+        @include respond(50em) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__sort-selection-label {
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+
+    &__sort-selection {
+        font-family: inherit;
+
+        @include respond(25em) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__pagination-page-number {
+        font-size: 1.6rem;
+    }
+}
+
+.footer {
+    font-size: 1.6rem;
+    letter-spacing: .5px;
+
+    @include respond(50em) {
+        font-size: 1.8rem;
+    }
+}
+
+.header {
+    &__title {
+        letter-spacing: 1px;
+
+        span {
+            @include respond(28em) {
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 2.8rem;
+                font-weight: 400;
+            }
+        }
+    }
+
+    &__addToDo {
+        & > * {
+            font-family: inherit;
+        }
+    }
+
+    &__addToDo-inputField {
+        font-size: 1.6rem;
+
+        @include respond(40em) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__toDoText {
+        font-size: inherit;
+    }
+
+    &__dueDateSelect-dummy {
+        @include respond(40em) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__submitToDo {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+}
+
+.instruction {
+    font-size: 1.6rem;
+
+    &__toggle {
+        font-size: inherit;
+    }
+
+    &__toggle-text {
+        font-size: 1.4rem;
+    }
+
+    &__text {
+        letter-spacing: .5px;
+
+        @include respond(40em) {
+            letter-spacing: .2px;
+        }
+    }
+}
+
+.toDoList {
+    &__heading {
+        font-size: 2.2rem;
+
+        @include respond(66em) {
+            font-size: 2rem;
+        }
+
+        @include respond(50em) {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__sort-selection-wrapper {
+        font-size: 1.6rem;
+
+        @include respond(50em) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__sort-selection-label {
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+
+    &__sort-selection {
+        font-family: inherit;
+
+        @include respond(25em) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__pagination-page-number {
+        font-size: 1.6rem;
+    }
+}

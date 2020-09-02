@@ -1,0 +1,1053 @@
+@keyframes infiniteUpDown {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(5px); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes infiniteUpDownReversed {
+  0% {
+    transform: translateY(0) rotate(180deg); }
+  50% {
+    transform: translateY(5px) rotate(180deg); }
+  100% {
+    transform: translateY(0) rotate(180deg); } }
+
+@keyframes infiniteScale {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.25); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes infiniteLeftRight {
+  0% {
+    transform: translate(0, -45%); }
+  50% {
+    transform: translate(-4px, -45%); }
+  100% {
+    transform: translate(0, -45%); } }
+
+@keyframes infiniteRightLeft {
+  0% {
+    transform: translate(0, -45%); }
+  50% {
+    transform: translate(4px, -45%); }
+  100% {
+    transform: translate(0, -45%); } }
+
+@keyframes infiniteRedo {
+  0% {
+    transform: translateX(0) rotateY(180deg); }
+  50% {
+    transform: translateX(-4px) rotateY(180deg); }
+  100% {
+    transform: translateX(0) rotateY(180deg); } }
+
+html {
+  font-size: 62.5%;
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box; }
+  @media only screen and (max-width: 40em) {
+    html {
+      font-size: 50%; } }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
+
+body {
+  text-align: center;
+  background: var(--color-primary-light-1);
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom right, var(--color-primary-dark-2), var(--color-primary-middle-2), var(--color-primary-light-1));
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom right, var(--color-primary-dark-2), var(--color-primary-middle-2), var(--color-primary-light-1));
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-attachment: fixed;
+  display: grid;
+  grid-template-areas: "header header" "toDoList completedList" "footer footer";
+  gap: 5rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(10vw, min-content) minmax(45vw, min-content) 5vw;
+  padding: 1rem; }
+  @media only screen and (max-width: 75em) {
+    body {
+      grid-template-rows: minmax(10vw, min-content) minmax(50vw, min-content) 5vw; } }
+  @media only screen and (max-width: 66em) {
+    body {
+      grid-template-rows: minmax(10vw, min-content) minmax(60vw, min-content) 5vw; } }
+  @media only screen and (max-width: 56.25em) {
+    body {
+      grid-template-rows: minmax(10vw, min-content) minmax(65vw, min-content) 7.5vw;
+      gap: 4rem; } }
+  @media only screen and (max-width: 50em) {
+    body {
+      grid-template-areas: "header" "toDoList" "completedList" "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: min-content repeat(2, minmax(70vw, min-content)) 7.5vw;
+      gap: 7.5rem; } }
+  @media only screen and (max-width: 37em) {
+    body {
+      grid-template-rows: min-content repeat(2, minmax(80vw, min-content)) 7.5vw; } }
+  @media only screen and (max-width: 32em) {
+    body {
+      grid-template-rows: min-content repeat(2, minmax(90vw, min-content)) 7.5vw; } }
+  @media only screen and (max-width: 28em) {
+    body {
+      grid-template-rows: min-content repeat(2, minmax(100vw, min-content)) 7.5vw; } }
+  @media only screen and (max-width: 25em) {
+    body {
+      grid-template-rows: min-content repeat(2, minmax(115vw, min-content)) 7.5vw; } }
+  @media only screen and (max-width: 22em) {
+    body {
+      padding: 0;
+      grid-template-rows: min-content repeat(2, minmax(130vw, min-content)) 7.5vw; } }
+  @media only screen and (max-width: 20em) {
+    body {
+      grid-template-rows: min-content repeat(2, minmax(140vw, min-content)) 10vw; } }
+
+:root {
+  --color-primary-light-1: #9CECFB;
+  --color-primary-light-2: #54dff8;
+  --color-primary-light-3: #0ad2f5;
+  --color-primary-middle-1: #86d2f9;
+  --color-primary-middle-2: #65C7F7;
+  --color-primary-middle-3: #3db8f5;
+  --color-primary-dark-1: #0062ff;
+  --color-primary-dark-2: #0052D4;
+  --color-primary-dark-3: #0044b3;
+  --color-bluegreen-1: #62e1ea;
+  --color-bluegreen-2: #2CD5E2;
+  --color-bluegreen-3: #1cbeca;
+  --color-baby-blue: #C2E0EF;
+  --color-baby-blue-dark: #9acce4;
+  --color-secondary-1: #bc4e9c;
+  --color-secondary-2: #f80759; }
+
+.btn {
+  font-family: inherit; }
+
+.btn-edit {
+  text-transform: uppercase;
+  font-size: 1.2rem; }
+
+.btn-reset-all {
+  font-size: 1.4rem;
+  text-transform: uppercase; }
+  @media only screen and (max-width: 56.25em) {
+    .btn-reset-all {
+      font-size: 1.2rem; } }
+  @media only screen and (max-width: 50em) {
+    .btn-reset-all {
+      font-size: 1.4rem; } }
+
+.completedListItem > * {
+  font-size: 1.6rem; }
+  @media only screen and (max-width: 50em) {
+    .completedListItem > * {
+      font-size: 1.8rem; } }
+
+.completedListItem__name {
+  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+
+.toDoListItem > * {
+  font-size: 1.6rem; }
+  @media only screen and (max-width: 50em) {
+    .toDoListItem > * {
+      font-size: 1.8rem; } }
+
+.toDoListItem__input-edit {
+  font-family: inherit; }
+
+.toDoListItem__name {
+  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+
+.completedList__heading {
+  font-size: 2.2rem; }
+  @media only screen and (max-width: 66em) {
+    .completedList__heading {
+      font-size: 2rem; } }
+  @media only screen and (max-width: 50em) {
+    .completedList__heading {
+      font-size: 2.2rem; } }
+
+.completedList__sort-selection-wrapper {
+  font-size: 1.6rem; }
+  @media only screen and (max-width: 50em) {
+    .completedList__sort-selection-wrapper {
+      font-size: 1.8rem; } }
+
+.completedList__sort-selection-label {
+  text-transform: uppercase;
+  letter-spacing: .5px; }
+
+.completedList__sort-selection {
+  font-family: inherit; }
+  @media only screen and (max-width: 25em) {
+    .completedList__sort-selection {
+      font-size: 1.6rem; } }
+
+.completedList__pagination-page-number {
+  font-size: 1.6rem; }
+
+.footer {
+  font-size: 1.6rem;
+  letter-spacing: .5px; }
+  @media only screen and (max-width: 50em) {
+    .footer {
+      font-size: 1.8rem; } }
+
+.header__title {
+  letter-spacing: 1px; }
+  @media only screen and (max-width: 28em) {
+    .header__title span {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 2.8rem;
+      font-weight: 400; } }
+
+.header__addToDo > * {
+  font-family: inherit; }
+
+.header__addToDo-inputField {
+  font-size: 1.6rem; }
+  @media only screen and (max-width: 40em) {
+    .header__addToDo-inputField {
+      font-size: 1.8rem; } }
+
+.header__toDoText {
+  font-size: inherit; }
+
+@media only screen and (max-width: 40em) {
+  .header__dueDateSelect-dummy {
+    font-size: 1.6rem; } }
+
+.header__submitToDo {
+  font-size: 1.4rem;
+  text-transform: uppercase; }
+
+.instruction {
+  font-size: 1.6rem; }
+  .instruction__toggle {
+    font-size: inherit; }
+  .instruction__toggle-text {
+    font-size: 1.4rem; }
+  .instruction__text {
+    letter-spacing: .5px; }
+    @media only screen and (max-width: 40em) {
+      .instruction__text {
+        letter-spacing: .2px; } }
+
+.toDoList__heading {
+  font-size: 2.2rem; }
+  @media only screen and (max-width: 66em) {
+    .toDoList__heading {
+      font-size: 2rem; } }
+  @media only screen and (max-width: 50em) {
+    .toDoList__heading {
+      font-size: 2.2rem; } }
+
+.toDoList__sort-selection-wrapper {
+  font-size: 1.6rem; }
+  @media only screen and (max-width: 50em) {
+    .toDoList__sort-selection-wrapper {
+      font-size: 1.8rem; } }
+
+.toDoList__sort-selection-label {
+  text-transform: uppercase;
+  letter-spacing: .5px; }
+
+.toDoList__sort-selection {
+  font-family: inherit; }
+  @media only screen and (max-width: 25em) {
+    .toDoList__sort-selection {
+      font-size: 1.6rem; } }
+
+.toDoList__pagination-page-number {
+  font-size: 1.6rem; }
+
+.btn {
+  outline: none;
+  cursor: pointer;
+  border: none; }
+
+.btn--hidden {
+  border: none;
+  padding: 0;
+  background-color: transparent; }
+
+.btn-edit {
+  border-radius: 3rem;
+  padding: .8rem;
+  position: relative;
+  z-index: 0;
+  overflow: hidden; }
+  .btn-edit:hover::before {
+    width: 100%; }
+  .btn-edit--submit::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    z-index: -1;
+    transition: width .3s;
+    background-image: linear-gradient(to right, var(--color-bluegreen-1) 0%, var(--color-bluegreen-2) 60%, var(--color-bluegreen-3) 85%); }
+  .btn-edit--cancel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    z-index: -1;
+    transition: width .3s;
+    background-image: linear-gradient(to right, var(--color-secondary-1), var(--color-secondary-2)); }
+
+.btn-reset-all {
+  position: absolute;
+  left: 50%;
+  bottom: -10rem;
+  transform: translateX(-50%);
+  color: #fff;
+  z-index: 10;
+  border-radius: 3rem;
+  padding: .8rem 1.6rem;
+  background: linear-gradient(to right, var(--color-secondary-1), var(--color-secondary-2));
+  transition: all .3s; }
+  @media only screen and (max-width: 66em) {
+    .btn-reset-all {
+      bottom: -8rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .btn-reset-all {
+      padding: .8rem 1.2rem; } }
+  .btn-reset-all:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn-reset-all:focus {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2); }
+
+.completedListItem {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 40%) 1fr;
+  align-items: center;
+  justify-items: center;
+  border-radius: 1rem;
+  color: #fff;
+  padding: 1.85rem !important;
+  background-color: var(--color-baby-blue-dark) !important; }
+  @media only screen and (max-width: 56.25em) {
+    .completedListItem {
+      grid-template-columns: 1fr 35% 55% 1fr;
+      padding: 1.5rem !important; } }
+  @media only screen and (max-width: 50em) {
+    .completedListItem {
+      grid-template-columns: 1fr repeat(2, 40%) 1fr; } }
+  @media only screen and (max-width: 25em) {
+    .completedListItem {
+      grid-template-columns: 1fr repeat(2, 45%) 1fr; } }
+  @media only screen and (max-width: 20em) {
+    .completedListItem {
+      grid-template-columns: 1fr 35% 55% 1fr; } }
+  .completedListItem:not(:last-child) {
+    margin-bottom: 1rem; }
+    @media only screen and (max-width: 56.25em) {
+      .completedListItem:not(:last-child) {
+        margin-bottom: .75rem; } }
+    @media only screen and (max-width: 50em) {
+      .completedListItem:not(:last-child) {
+        margin-bottom: 1rem; } }
+    @media only screen and (max-width: 40em) {
+      .completedListItem:not(:last-child) {
+        margin-bottom: 1.25rem; } }
+  .completedListItem__redo-btn {
+    position: relative;
+    color: inherit; }
+    .completedListItem__redo-btn:hover .completedListItem__redo-btn-icon {
+      animation: infiniteRedo 1.25s infinite; }
+    .completedListItem__redo-btn:hover::after {
+      opacity: 1;
+      bottom: 0;
+      transform: translate(-50%, -250%);
+      transform: translate(-45%, -250%); }
+    .completedListItem__redo-btn::after {
+      content: 'Mark as incomplete';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: max-content;
+      opacity: 0;
+      transition: all .2s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .7px;
+      transform: translate(-45%, 0); }
+  .completedListItem__redo-btn-icon {
+    fill: currentColor;
+    height: 2rem;
+    width: 2rem;
+    transform: rotateY(180deg); }
+    @media only screen and (max-width: 56.25em) {
+      .completedListItem__redo-btn-icon {
+        height: 1.75rem;
+        width: 1.75rem; } }
+    @media only screen and (max-width: 50em) {
+      .completedListItem__redo-btn-icon {
+        height: 2rem;
+        width: 2rem; } }
+  .completedListItem__name {
+    margin: 0; }
+  .completedListItem__completedDate-wrapper {
+    display: flex;
+    align-items: center; }
+  .completedListItem__completedDate-details > * {
+    margin: 0; }
+  .completedListItem__completedDate-btn {
+    margin-right: 1rem;
+    position: relative;
+    cursor: default;
+    color: inherit; }
+    .completedListItem__completedDate-btn:hover::after {
+      opacity: 1;
+      bottom: 0;
+      transform: translate(-50%, -250%); }
+    .completedListItem__completedDate-btn::after {
+      content: 'completion details';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: max-content;
+      opacity: 0;
+      transition: all .2s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .7px; }
+  .completedListItem__completedDate-btn-icon {
+    fill: currentColor;
+    height: 2rem;
+    width: 2rem;
+    margin-right: 5px; }
+    @media only screen and (max-width: 56.25em) {
+      .completedListItem__completedDate-btn-icon {
+        height: 1.75rem;
+        width: 1.75rem; } }
+    @media only screen and (max-width: 50em) {
+      .completedListItem__completedDate-btn-icon {
+        height: 2rem;
+        width: 2rem; } }
+  .completedListItem__delete-btn {
+    color: inherit;
+    position: relative; }
+    .completedListItem__delete-btn:hover .completedListItem__delete-btn-icon {
+      animation: infiniteScale 1.25s infinite; }
+    .completedListItem__delete-btn:hover::after {
+      opacity: 1;
+      bottom: 0;
+      transform: translate(-50%, -250%); }
+    .completedListItem__delete-btn::after {
+      content: 'remove task';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: max-content;
+      opacity: 0;
+      transition: all .2s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .7px; }
+  .completedListItem__delete-btn-icon {
+    fill: currentColor;
+    height: 2rem;
+    width: 2rem; }
+    @media only screen and (max-width: 56.25em) {
+      .completedListItem__delete-btn-icon {
+        height: 1.75rem;
+        width: 1.75rem; } }
+    @media only screen and (max-width: 50em) {
+      .completedListItem__delete-btn-icon {
+        height: 2rem;
+        width: 2rem; } }
+
+.toDoListItem {
+  display: grid;
+  grid-template-columns: repeat(2, 40%) 1fr;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background-color: var(--color-primary-light-1); }
+  @media only screen and (max-width: 56.25em) {
+    .toDoListItem {
+      grid-template-columns: repeat(2, 45%) 1fr;
+      padding: 2.25rem; } }
+  @media only screen and (max-width: 25em) {
+    .toDoListItem {
+      grid-template-columns: repeat(2, 47.5%) 1fr; } }
+  .toDoListItem:not(:last-child) {
+    margin-bottom: 1rem; }
+    @media only screen and (max-width: 56.25em) {
+      .toDoListItem:not(:last-child) {
+        margin-bottom: .75rem; } }
+    @media only screen and (max-width: 50em) {
+      .toDoListItem:not(:last-child) {
+        margin-bottom: 1rem; } }
+    @media only screen and (max-width: 40em) {
+      .toDoListItem:not(:last-child) {
+        margin-bottom: 1.25rem; } }
+  .toDoListItem:nth-child(2n) {
+    background-color: var(--color-baby-blue); }
+  .toDoListItem__popup, .toDoListItem__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .toDoListItem__input-edit {
+    margin: .5rem 0;
+    border-radius: 1rem;
+    border: none;
+    padding: .5rem;
+    outline: none; }
+  .toDoListItem__edit-popup {
+    margin-right: 1.5rem; }
+  .toDoListItem__edit-wrapper {
+    display: flex;
+    align-items: center; }
+  .toDoListItem__edit-btn {
+    position: relative; }
+    .toDoListItem__edit-btn:hover .toDoListItem__edit-btn-icon {
+      animation: infiniteScale 1.25s infinite; }
+    .toDoListItem__edit-btn:hover::after {
+      opacity: 1;
+      bottom: 0;
+      transform: translate(-50%, -250%); }
+    .toDoListItem__edit-btn::after {
+      content: 'Edit task';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: max-content;
+      opacity: 0;
+      transition: all .2s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .7px; }
+  .toDoListItem__edit-btn-icon {
+    height: 2rem;
+    width: 2rem; }
+    @media only screen and (max-width: 56.25em) {
+      .toDoListItem__edit-btn-icon {
+        height: 1.75rem;
+        width: 1.75rem; } }
+    @media only screen and (max-width: 50em) {
+      .toDoListItem__edit-btn-icon {
+        height: 2rem;
+        width: 2rem; } }
+  .toDoListItem__name {
+    margin: 0 0 0 2rem; }
+  .toDoListItem__dueDate-edit::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer; }
+  .toDoListItem__dueDate-wrapper {
+    display: flex;
+    align-items: center;
+    justify-self: center; }
+  .toDoListItem__dueDate-date {
+    margin: 0; }
+  .toDoListItem__dueDate-btn {
+    margin-left: 5px;
+    position: relative; }
+    .toDoListItem__dueDate-btn:hover .toDoListItem__dueDate-btn-icon {
+      animation: infiniteScale 1.25s infinite; }
+    .toDoListItem__dueDate-btn:hover::after {
+      opacity: 1;
+      bottom: 0;
+      transform: translate(-50%, -250%); }
+    .toDoListItem__dueDate-btn::after {
+      content: 'Edit deadline';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: max-content;
+      opacity: 0;
+      transition: all .2s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .7px; }
+  .toDoListItem__dueDate-btn-icon {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 5px; }
+    @media only screen and (max-width: 56.25em) {
+      .toDoListItem__dueDate-btn-icon {
+        height: 1.75rem;
+        width: 1.75rem; } }
+    @media only screen and (max-width: 50em) {
+      .toDoListItem__dueDate-btn-icon {
+        height: 2rem;
+        width: 2rem; } }
+  .toDoListItem__complete-btn {
+    position: relative;
+    align-self: center;
+    justify-self: center; }
+    .toDoListItem__complete-btn:hover .toDoListItem__complete-btn-icon {
+      animation: infiniteScale 1.25s infinite; }
+    .toDoListItem__complete-btn:hover::after {
+      opacity: 1;
+      bottom: 0;
+      transform: translate(-50%, -250%); }
+    .toDoListItem__complete-btn::after {
+      content: 'Mark as completed';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: max-content;
+      opacity: 0;
+      transition: all .2s;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .7px; }
+  .toDoListItem__complete-btn-icon {
+    height: 2rem;
+    width: 2rem; }
+    @media only screen and (max-width: 56.25em) {
+      .toDoListItem__complete-btn-icon {
+        height: 1.75rem;
+        width: 1.75rem; } }
+    @media only screen and (max-width: 50em) {
+      .toDoListItem__complete-btn-icon {
+        height: 2rem;
+        width: 2rem; } }
+
+.completedList {
+  grid-area: completedList;
+  position: relative; }
+  .completedList__heading {
+    margin-bottom: 2rem;
+    position: relative; }
+    .completedList__heading::after {
+      content: "";
+      height: 1.5px;
+      width: 20vw;
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.2); }
+      @media only screen and (max-width: 75em) {
+        .completedList__heading::after {
+          width: 22.5vw; } }
+      @media only screen and (max-width: 56.25em) {
+        .completedList__heading::after {
+          width: 27.5vw; } }
+      @media only screen and (max-width: 50em) {
+        .completedList__heading::after {
+          width: 30vw; } }
+      @media only screen and (max-width: 40em) {
+        .completedList__heading::after {
+          width: 35vw; } }
+      @media only screen and (max-width: 32em) {
+        .completedList__heading::after {
+          width: 40vw; } }
+      @media only screen and (max-width: 28em) {
+        .completedList__heading::after {
+          width: 45vw; } }
+      @media only screen and (max-width: 25em) {
+        .completedList__heading::after {
+          width: 55vw; } }
+  .completedList__sort-selection {
+    margin-left: 1rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 5px 1rem;
+    outline: none; }
+    @media only screen and (max-width: 28em) {
+      .completedList__sort-selection {
+        padding: 5px; } }
+  .completedList__full {
+    list-style: none;
+    padding: 2rem;
+    margin-top: 0; }
+    @media only screen and (max-width: 50em) {
+      .completedList__full {
+        padding: 3rem 10rem; } }
+    @media only screen and (max-width: 40em) {
+      .completedList__full {
+        padding: 3rem 7rem; } }
+    @media only screen and (max-width: 32em) {
+      .completedList__full {
+        padding: 3rem; } }
+    @media only screen and (max-width: 28em) {
+      .completedList__full {
+        padding: 2rem; } }
+    @media only screen and (max-width: 25em) {
+      .completedList__full {
+        padding: 1rem;
+        padding-top: 2.5rem; } }
+    @media only screen and (max-width: 22em) {
+      .completedList__full {
+        padding: 3px;
+        padding-top: 2rem; } }
+  .completedList__pagination {
+    width: 40%;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%); }
+    @media only screen and (max-width: 50em) {
+      .completedList__pagination {
+        bottom: -4rem; } }
+    @media only screen and (max-width: 22em) {
+      .completedList__pagination {
+        bottom: -2.5rem; } }
+  .completedList__pagination-btn {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -45%); }
+    .completedList__pagination-btn--backward {
+      left: 10%; }
+      .completedList__pagination-btn--backward:hover {
+        animation: infiniteLeftRight 1s infinite; }
+    .completedList__pagination-btn--forward {
+      right: 10%; }
+      .completedList__pagination-btn--forward:hover {
+        animation: infiniteRightLeft 1s infinite; }
+  .completedList__pagination-btn-icon {
+    height: 2rem;
+    width: 2rem; }
+  .completedList__pagination-page-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0; }
+
+.footer {
+  grid-area: footer;
+  align-self: center;
+  justify-self: center;
+  position: relative; }
+  .footer::before {
+    content: "";
+    height: 1.5px;
+    width: 20vw;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    top: 0;
+    width: 300%; }
+    @media only screen and (max-width: 75em) {
+      .footer::before {
+        width: 22.5vw; } }
+    @media only screen and (max-width: 56.25em) {
+      .footer::before {
+        width: 27.5vw; } }
+    @media only screen and (max-width: 50em) {
+      .footer::before {
+        width: 30vw; } }
+    @media only screen and (max-width: 40em) {
+      .footer::before {
+        width: 35vw; } }
+    @media only screen and (max-width: 32em) {
+      .footer::before {
+        width: 40vw; } }
+    @media only screen and (max-width: 28em) {
+      .footer::before {
+        width: 45vw; } }
+    @media only screen and (max-width: 25em) {
+      .footer::before {
+        width: 55vw; } }
+    @media only screen and (max-width: 75em) {
+      .footer::before {
+        width: 250%; } }
+    @media only screen and (max-width: 40em) {
+      .footer::before {
+        width: 200%; } }
+    @media only screen and (max-width: 32em) {
+      .footer::before {
+        width: 150%; } }
+    @media only screen and (max-width: 22em) {
+      .footer::before {
+        width: 120%; } }
+
+.header {
+  grid-area: header;
+  position: relative; }
+  .header__title {
+    margin-top: 0; }
+    @media only screen and (max-width: 28em) {
+      .header__title span {
+        display: block; } }
+  .header__addToDo {
+    margin-top: 1rem;
+    position: relative; }
+    .header__addToDo > * {
+      display: inline-block; }
+  .header__addToDo-inputField {
+    position: relative; }
+    .header__addToDo-inputField::after {
+      content: "";
+      height: 90%;
+      width: 2px;
+      background-color: #eee;
+      position: absolute;
+      top: 50%;
+      right: 14rem;
+      transform: translateY(-50%); }
+      @media only screen and (max-width: 40em) {
+        .header__addToDo-inputField::after {
+          height: 85%; } }
+  .header__toDoText {
+    padding: 1.5rem;
+    width: 37.5vw;
+    padding-right: 12.5vw;
+    border: 3px solid var(--color-bluegreen-1);
+    border-radius: 3rem;
+    outline: none;
+    transition: border .3s; }
+    @media only screen and (max-width: 66em) {
+      .header__toDoText {
+        width: 42.5vw;
+        padding-right: 14.5vw; } }
+    @media only screen and (max-width: 56.25em) {
+      .header__toDoText {
+        width: 50vw;
+        padding-right: 16vw; } }
+    @media only screen and (max-width: 50em) {
+      .header__toDoText {
+        width: 60vw;
+        padding-right: 17.5vw; } }
+    @media only screen and (max-width: 37em) {
+      .header__toDoText {
+        width: 65vw;
+        padding-right: 20vw; } }
+    @media only screen and (max-width: 32em) {
+      .header__toDoText {
+        width: 75vw;
+        padding-right: 22.5vw; } }
+    @media only screen and (max-width: 28em) {
+      .header__toDoText {
+        width: 85vw;
+        padding: 1.25rem;
+        padding-right: 25vw; } }
+    @media only screen and (max-width: 25em) {
+      .header__toDoText {
+        width: 90vw;
+        padding-right: 28vw; } }
+    @media only screen and (max-width: 22em) {
+      .header__toDoText {
+        padding-right: 32.5vw; } }
+    @media only screen and (max-width: 20em) {
+      .header__toDoText {
+        padding-right: 35vw; } }
+  .header__dueDate {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    opacity: 0; }
+    @media only screen and (max-width: 40em) {
+      .header__dueDate {
+        right: 1rem; } }
+    .header__dueDate::-webkit-calendar-picker-indicator:hover {
+      cursor: pointer; }
+  .header__dueDateSelect-dummy {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    padding: 0; }
+  .header__showCalendar {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-family: inherit;
+    background-color: transparent; }
+  .header__showCalendar-text {
+    display: inline-block; }
+  .header__showCalendar-icon {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 1rem;
+    cursor: pointer; }
+  .header__submitToDo {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -4rem;
+    transform: translateX(-50%);
+    border-radius: 3rem;
+    padding: .8rem 1.2rem;
+    overflow: hidden; }
+    .header__submitToDo:hover::before {
+      width: 100%; }
+    .header__submitToDo::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      z-index: -1;
+      transition: width .3s;
+      background-image: linear-gradient(to right, var(--color-bluegreen-1) 0%, var(--color-bluegreen-2) 60%, var(--color-bluegreen-3) 85%); }
+
+.instruction__toggle-wrapper {
+  filter: drop-shadow(2px 0 4px rgba(0, 0, 0, 0.4)); }
+
+.instruction__toggle {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(0.7) translateY(9px);
+  transition: all .2s;
+  clip-path: polygon(20% 0, 80% 0, 85% 6.25%, 90% 25%, 95% 56.25%, 100% 100%, 0 100%, 5% 56.25%, 10% 25%, 15% 6.25%); }
+  .instruction__toggle:hover {
+    transform: scale(1) translateY(0); }
+    .instruction__toggle:hover .instruction__toggle-text {
+      opacity: 1; }
+    .instruction__toggle:hover .instruction__toggle-icon {
+      animation: infiniteUpDown 1s infinite; }
+    .instruction__toggle:hover .instruction__toggle-icon--reversed {
+      animation: infiniteUpDownReversed 1s infinite; }
+
+.instruction__toggle-icon {
+  height: 2rem;
+  width: 2rem;
+  backface-visibility: hidden; }
+
+.instruction__toggle-icon--reversed {
+  height: 2rem;
+  width: 2rem;
+  backface-visibility: hidden;
+  transform: rotate(180deg); }
+
+.instruction__toggle-text {
+  opacity: 0;
+  transition: all .3s; }
+
+.instruction__text-wrapper {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 3rem;
+  margin-bottom: 5px; }
+
+.toDoList {
+  grid-area: toDoList;
+  position: relative; }
+  .toDoList__heading {
+    margin-bottom: 2rem;
+    position: relative; }
+    .toDoList__heading::after {
+      content: "";
+      height: 1.5px;
+      width: 20vw;
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.2); }
+      @media only screen and (max-width: 75em) {
+        .toDoList__heading::after {
+          width: 22.5vw; } }
+      @media only screen and (max-width: 56.25em) {
+        .toDoList__heading::after {
+          width: 27.5vw; } }
+      @media only screen and (max-width: 50em) {
+        .toDoList__heading::after {
+          width: 30vw; } }
+      @media only screen and (max-width: 40em) {
+        .toDoList__heading::after {
+          width: 35vw; } }
+      @media only screen and (max-width: 32em) {
+        .toDoList__heading::after {
+          width: 40vw; } }
+      @media only screen and (max-width: 28em) {
+        .toDoList__heading::after {
+          width: 45vw; } }
+      @media only screen and (max-width: 25em) {
+        .toDoList__heading::after {
+          width: 55vw; } }
+  .toDoList__sort-selection {
+    margin-left: 1rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 5px 1rem;
+    outline: none; }
+    @media only screen and (max-width: 28em) {
+      .toDoList__sort-selection {
+        padding: 5px; } }
+  .toDoList__full {
+    list-style: none;
+    padding: 2rem;
+    margin-top: 0; }
+    @media only screen and (max-width: 50em) {
+      .toDoList__full {
+        padding: 3rem 10rem; } }
+    @media only screen and (max-width: 40em) {
+      .toDoList__full {
+        padding: 3rem 7rem; } }
+    @media only screen and (max-width: 32em) {
+      .toDoList__full {
+        padding: 3rem; } }
+    @media only screen and (max-width: 28em) {
+      .toDoList__full {
+        padding: 2rem; } }
+    @media only screen and (max-width: 25em) {
+      .toDoList__full {
+        padding: 1rem;
+        padding-top: 2.5rem; } }
+    @media only screen and (max-width: 22em) {
+      .toDoList__full {
+        padding: 3px;
+        padding-top: 2rem; } }
+  .toDoList__pagination {
+    width: 40%;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%); }
+    @media only screen and (max-width: 50em) {
+      .toDoList__pagination {
+        bottom: -3rem; } }
+  .toDoList__pagination-btn {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -45%); }
+    .toDoList__pagination-btn--backward {
+      left: 10%; }
+      .toDoList__pagination-btn--backward:hover {
+        animation: infiniteLeftRight 1s infinite; }
+    .toDoList__pagination-btn--forward {
+      right: 10%; }
+      .toDoList__pagination-btn--forward:hover {
+        animation: infiniteRightLeft 1s infinite; }
+  .toDoList__pagination-btn-icon {
+    height: 2rem;
+    width: 2rem; }
+  .toDoList__pagination-page-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0; }

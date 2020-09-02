@@ -1,0 +1,104 @@
+html {
+    font-size: 62.5%;
+    font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+
+    @include respond(40em) {
+        font-size: 50%;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    text-align: center;
+    background: var(--color-primary-light-1);  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom right, var(--color-primary-dark-2), var(--color-primary-middle-2), var(--color-primary-light-1));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom right, var(--color-primary-dark-2), var(--color-primary-middle-2), var(--color-primary-light-1)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed;
+
+    display: grid;
+    grid-template-areas: "header header"
+                         "toDoList completedList"
+                         "footer footer"
+    ;
+    gap: 5rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: minmax(10vw, min-content) minmax(45vw, min-content) 5vw; //check back later for 1st row not sure if accurate
+    padding: 1rem;
+
+    @include respond(75em) {
+        grid-template-rows: minmax(10vw, min-content) minmax(50vw, min-content) 5vw;
+    }
+
+    @include respond(66em) {
+        grid-template-rows: minmax(10vw, min-content) minmax(60vw, min-content) 5vw;
+    }
+
+    @include respond(56.25em) {
+        grid-template-rows: minmax(10vw, min-content) minmax(65vw, min-content) 7.5vw;
+        gap: 4rem;
+    }
+
+    @include respond(50em) {
+        grid-template-areas: "header"
+                             "toDoList"
+                             "completedList"
+                             "footer"
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content repeat(2, minmax(70vw, min-content)) 7.5vw;
+        gap: 7.5rem;
+    }
+
+    @include respond(37em) {
+        grid-template-rows: min-content repeat(2, minmax(80vw, min-content)) 7.5vw;
+    }
+
+    @include respond(32em) {
+        grid-template-rows: min-content repeat(2, minmax(90vw, min-content)) 7.5vw;
+    }
+
+    @include respond(28em) {
+        grid-template-rows: min-content repeat(2, minmax(100vw, min-content)) 7.5vw;
+    }
+
+    @include respond(25em) {
+        grid-template-rows: min-content repeat(2, minmax(115vw, min-content)) 7.5vw;
+    }
+
+    @include respond(22em) {
+        padding: 0;
+        grid-template-rows: min-content repeat(2, minmax(130vw, min-content)) 7.5vw;
+    }
+
+    @include respond(20em) {
+        grid-template-rows: min-content repeat(2, minmax(140vw, min-content)) 10vw;
+    }
+}
+
+:root {
+    --color-primary-light-1: #9CECFB;
+    --color-primary-light-2: #54dff8;
+    --color-primary-light-3: #0ad2f5;
+
+    --color-primary-middle-1: #86d2f9;
+    --color-primary-middle-2: #65C7F7;
+    --color-primary-middle-3: #3db8f5;
+
+    --color-primary-dark-1: #0062ff;
+    --color-primary-dark-2: #0052D4;
+    --color-primary-dark-3: #0044b3;
+
+    --color-bluegreen-1: #62e1ea;
+    --color-bluegreen-2: #2CD5E2;
+    --color-bluegreen-3: #1cbeca;
+
+    --color-baby-blue: #C2E0EF;
+    --color-baby-blue-dark: #9acce4;
+
+    --color-secondary-1: #bc4e9c;
+    --color-secondary-2: #f80759;
+}

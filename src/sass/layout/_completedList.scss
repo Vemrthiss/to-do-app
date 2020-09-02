@@ -1,0 +1,106 @@
+.completedList {
+    grid-area: completedList;
+    position: relative; //absolute positioning of pagination
+    
+    &__heading {
+        margin-bottom: 2rem;
+        position: relative; //absolute positioning of after pseudo element
+
+        &::after {
+            @include lineBottom;
+        }
+    }
+
+    &__sort-selection {
+        margin-left: 1rem;
+        border-radius: 1rem;
+        border: none;
+        padding: 5px 1rem;
+        outline: none;
+
+        @include respond(28em) {
+            padding: 5px;
+        }
+    }
+
+    &__full {
+        list-style: none;
+        padding: 2rem;
+        margin-top: 0;
+
+        @include respond(50em) {
+            padding: 3rem 10rem;
+        }
+
+        @include respond(40em) {
+            padding: 3rem 7rem;
+        }
+
+        @include respond(32em) {
+            padding: 3rem;
+        }
+
+        @include respond(28em) {
+            padding: 2rem;
+        }
+
+        @include respond(25em) {
+            padding: 1rem;
+            padding-top: 2.5rem;
+        }
+
+        @include respond(22em) {
+            padding: 3px;
+            padding-top: 2rem;
+        }
+    }
+
+    &__pagination {
+        width: 40%;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include respond(50em) {
+            bottom: -4rem;
+        }
+
+        @include respond(22em) {
+            bottom: -2.5rem;
+        }
+    }
+
+    &__pagination-btn {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -45%);
+
+        &--backward {
+            left: 10%;
+            &:hover {
+                animation: infiniteLeftRight 1s infinite;
+            }
+        }
+
+        &--forward {
+            right: 10%;
+            &:hover {
+                animation: infiniteRightLeft 1s infinite;
+            }
+        }
+    }
+
+    &__pagination-btn-icon {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    &__pagination-page-number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+    }
+}

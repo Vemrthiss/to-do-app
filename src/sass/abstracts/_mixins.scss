@@ -1,0 +1,76 @@
+@mixin toDoListNote {
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: max-content;
+    opacity: 0;
+    transition: all .2s;
+
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .7px;
+}
+
+@mixin toDoListNoteHover {
+    opacity: 1;
+    bottom: 0;
+    transform: translate(-50%, -250%);
+}
+
+@mixin lineBottom {
+    content: "";
+    height: 1.5px;
+    width: 20vw;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0, 0.2);
+
+    @include respond(75em) {
+        width: 22.5vw;
+    }
+
+    @include respond(56.25em) {
+        width: 27.5vw;
+    }
+
+    @include respond(50em) {
+        width: 30vw;
+    }
+
+    @include respond(40em) {
+        width: 35vw;
+    }
+
+    @include respond(32em) {
+        width: 40vw;
+    }
+
+    @include respond(28em) {
+        width: 45vw;
+    }
+
+    @include respond(25em) {
+        width: 55vw;
+    }
+}
+
+
+@mixin coloredScreen($color: linear-gradient(to right, var(--color-bluegreen-1) 0%, var(--color-bluegreen-2) 60%, var(--color-bluegreen-3) 85%)) {
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    z-index: -1;
+    transition: width .3s;
+    background-image: $color;
+}
+
+@mixin respond($breakpoint) {
+    @media only screen and (max-width: $breakpoint) {@content;}
+}

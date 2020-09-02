@@ -1,0 +1,63 @@
+.btn {
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+.btn--hidden {
+    // making the button transparent so that the icons are the only one visibile
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+.btn-edit {
+    border-radius: 3rem;
+    padding: .8rem;
+    position: relative; //for absolute positioning of before pseudo colour hover screen
+    z-index: 0;
+    overflow: hidden;
+
+    &:hover::before {
+        width: 100%;
+    }
+
+    &--submit::before {
+        @include coloredScreen();
+    }
+
+    &--cancel::before {
+        @include coloredScreen(linear-gradient(to right, var(--color-secondary-1), var(--color-secondary-2)));
+    }
+}
+
+.btn-reset-all {
+    position: absolute;
+    left: 50%;
+    bottom: -10rem;
+    transform: translateX(-50%);
+    color: #fff;
+    z-index: 10;
+    border-radius: 3rem;
+    padding: .8rem 1.6rem;
+    background: linear-gradient(to right, var(--color-secondary-1), var(--color-secondary-2));
+    transition: all .3s;
+
+    @include respond(66em) {
+        bottom: -8rem;
+    }
+
+    @include respond(56.25em) {
+        padding: .8rem 1.2rem;
+    }
+
+    &:hover {
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: .5rem 1rem 1rem rgba(0,0,0,.2);
+    }
+
+    &:focus {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: .25rem .5rem .5rem rgba(0,0,0,.2);
+    }
+}

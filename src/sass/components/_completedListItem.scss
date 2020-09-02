@@ -1,0 +1,163 @@
+.completedListItem {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, 40%) 1fr;
+    align-items: center;
+    justify-items: center;
+
+    border-radius: 1rem;
+    color: #fff;
+    padding: 1.85rem !important;
+    background-color: var(--color-baby-blue-dark) !important;
+
+    @include respond(56.25em) {
+        grid-template-columns: 1fr 35% 55% 1fr;
+        padding: 1.5rem !important;
+    }
+
+    @include respond(50em) {
+        grid-template-columns: 1fr repeat(2, 40%) 1fr;
+    }
+
+    @include respond(25em) {
+        grid-template-columns: 1fr repeat(2, 45%) 1fr;
+    }
+
+    @include respond(20em) {
+        grid-template-columns: 1fr 35% 55% 1fr;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+
+        @include respond(56.25em) {
+            margin-bottom: .75rem;
+        }
+
+        @include respond(50em) {
+            margin-bottom: 1rem;
+        }
+
+        @include respond(40em) {
+            margin-bottom: 1.25rem;;
+        }
+    }
+
+    &__redo-btn {
+        position: relative; //for absolute positioning of after pseudo element
+        color: inherit;
+
+        &:hover &-icon {
+            animation: infiniteRedo 1.25s infinite;
+        }
+
+        &:hover::after {
+            @include toDoListNoteHover;
+            transform: translate(-45%, -250%);
+        }
+
+        &::after {
+            content: 'Mark as incomplete';
+            @include toDoListNote;
+            transform: translate(-45%, 0);
+        }
+    }
+
+    &__redo-btn-icon {
+        fill: currentColor;
+        height: 2rem;
+        width: 2rem;
+        transform: rotateY(180deg);
+
+        @include respond(56.25em) {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @include respond(50em) {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
+    &__name {
+        margin: 0;
+    }
+
+    &__completedDate-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &__completedDate-details {
+        & > * {
+            margin: 0;
+        }
+    }
+
+    &__completedDate-btn {
+        margin-right: 1rem;
+        position: relative; //for absolute positioning of after pseudo element
+        cursor: default;
+        color: inherit;
+
+        &:hover::after {
+            @include toDoListNoteHover;
+        }
+
+        &::after {
+            content: 'completion details';
+            @include toDoListNote;
+        }
+    }
+
+    &__completedDate-btn-icon {
+        fill: currentColor;
+        height: 2rem;
+        width: 2rem;
+        margin-right: 5px;
+
+        @include respond(56.25em) {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @include respond(50em) {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
+    &__delete-btn {
+        color: inherit;
+        position: relative; //for absolute positioning of after pseudo element
+
+        &:hover &-icon {
+            animation: infiniteScale 1.25s infinite;
+        }
+
+        &:hover::after {
+            @include toDoListNoteHover;
+        }
+
+        &::after {
+            content: 'remove task';
+            @include toDoListNote;
+        }
+    }
+
+    &__delete-btn-icon {
+        fill: currentColor;
+        height: 2rem;
+        width: 2rem;
+
+        @include respond(56.25em) {
+            height: 1.75rem;
+            width: 1.75rem;
+        }
+
+        @include respond(50em) {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+}

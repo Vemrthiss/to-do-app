@@ -1,0 +1,28 @@
+.footer {
+    grid-area: footer;
+    align-self: center;
+    justify-self: center;
+    position: relative; //for before pseudo element
+
+    &::before {
+        @include lineBottom;
+        top: 0;
+        width: 300%;
+
+        @include respond(75em) {
+            width: 250%;
+        }
+
+        @include respond(40em) {
+            width: 200%;
+        }
+
+        @include respond(32em) {
+            width: 150%;
+        }
+
+        @include respond(22em) {
+            width: 120%;
+        }
+    }
+}
